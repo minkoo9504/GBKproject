@@ -3,17 +3,12 @@ import BookingSection from '../components/layouts/home/BookingSection';
 import EventSection from '../components/layouts/home/EventSection';
 import GallerySection from '../components/layouts/home/GallerySection';
 import GuideSection from '../components/layouts/home/GuideSection';
-import IntroSection from '../components/layouts/home/IntroSection';
 import NoticeSection from '../components/layouts/home/NoticeSection';
 import ProgramSection from '../components/layouts/home/ProgramSection';
 import Footer from './../components/layouts/Footer';
-import { useQuery } from 'react-query';
-import LoadingScreen from './LoadingScreen';
-import * as THREE from 'three';
-const HomePage = () => {
-  const manager = new THREE.LoadingManager();
 
-  const { data, isLoading } = useQuery('threeJs', manager.onStart);
+
+const HomePage = () => {
   useEffect(() => {
     const handleScroll = (event) => {
       // 화면 너비가 1024 이상인 경우에만 스크롤 이벤트 처리
@@ -50,11 +45,9 @@ const HomePage = () => {
       }
     };
   }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때만 useEffect가 호출되도록 설정
-  console.log(data);
+
   return (
     <main className="HomePage">
-      <LoadingScreen loadingComplete={!isLoading} />
-      <IntroSection></IntroSection>
       <GuideSection></GuideSection>
       <ProgramSection></ProgramSection>
       <GallerySection></GallerySection>
